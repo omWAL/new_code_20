@@ -1,0 +1,166 @@
+# Greedy Algorithm – Selection Sort in C++
+
+## Simple C++ Code
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[5] = {64, 25, 12, 22, 11};
+
+    for (int i = 0; i < 5; i++)
+    {
+        int min = i;
+
+        for (int j = i + 1; j < 5; j++)
+        {
+            if (arr[j] < arr[min])
+            {
+                min = j;
+            }
+        }
+
+        int temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+
+    cout << "Sorted Array: ";
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+---
+
+# Output
+
+```text
+Sorted Array: 11 12 22 25 64
+```
+
+---
+
+# Line by Line Explanation
+
+## Header File
+
+```cpp
+#include <iostream>
+```
+
+Used for input and output.
+
+```cpp
+using namespace std;
+```
+
+Uses standard namespace.
+
+---
+
+# Main Function
+
+```cpp
+int arr[5] = {64, 25, 12, 22, 11};
+```
+
+Creates array.
+
+---
+
+# Outer Loop
+
+```cpp
+for (int i = 0; i < 5; i++)
+```
+
+Moves position one by one.
+
+---
+
+# Minimum Index
+
+```cpp
+int min = i;
+```
+
+Assumes current element is minimum.
+
+---
+
+# Inner Loop
+
+```cpp
+for (int j = i + 1; j < 5; j++)
+```
+
+Checks remaining elements.
+
+---
+
+# Compare Elements
+
+```cpp
+if (arr[j] < arr[min])
+```
+
+Checks smaller element.
+
+```cpp
+min = j;
+```
+
+Updates minimum index.
+
+---
+
+# Swapping
+
+```cpp
+int temp = arr[i];
+arr[i] = arr[min];
+arr[min] = temp;
+```
+
+Swaps elements.
+
+---
+
+# Print Array
+
+```cpp
+cout << arr[i] << " ";
+```
+
+Prints sorted array.
+
+---
+
+# Simple Theory
+
+Selection Sort is a Greedy Algorithm because:
+
+* It selects the smallest element at every step.
+* Places it in correct position.
+
+Steps:
+
+1. Find smallest element
+2. Swap it
+3. Repeat process
+
+---
+
+# Time Complexity
+
+```text
+O(n²)
+```

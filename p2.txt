@@ -1,0 +1,247 @@
+# Simple A* Algorithm in C++
+
+```cpp
+#include <iostream>
+#include <queue>
+using namespace std;
+
+struct Node
+{
+    int vertex;
+    int cost;
+
+    bool operator<(const Node &a) const
+    {
+        return cost > a.cost;
+    }
+};
+
+int main()
+{
+    priority_queue<Node> pq;
+
+    int heuristic[5] = {7, 6, 2, 1, 0};
+
+    pq.push({0, heuristic[0]});
+
+    while (!pq.empty())
+    {
+        Node current = pq.top();
+        pq.pop();
+
+        cout << current.vertex << " ";
+
+        if (current.vertex == 4)
+        {
+            cout << "\nGoal Reached";
+            break;
+        }
+
+        if (current.vertex == 0)
+        {
+            pq.push({1, 1 + heuristic[1]});
+            pq.push({2, 4 + heuristic[2]});
+        }
+
+        if (current.vertex == 1)
+        {
+            pq.push({3, 2 + heuristic[3]});
+        }
+
+        if (current.vertex == 2)
+        {
+            pq.push({3, 1 + heuristic[3]});
+        }
+
+        if (current.vertex == 3)
+        {
+            pq.push({4, 3 + heuristic[4]});
+        }
+    }
+
+    return 0;
+}
+```
+
+---
+
+# Output
+
+```text
+0 2 3 4
+Goal Reached
+```
+
+---
+
+# Simple Line by Line Explanation
+
+## Header Files
+
+```cpp
+#include <iostream>
+```
+
+Used for input and output.
+
+```cpp
+#include <queue>
+```
+
+Used for priority queue.
+
+```cpp
+using namespace std;
+```
+
+Uses standard namespace.
+
+---
+
+# Structure
+
+```cpp
+struct Node
+```
+
+Creates node structure.
+
+```cpp
+int vertex;
+```
+
+Stores node number.
+
+```cpp
+int cost;
+```
+
+Stores total cost.
+
+---
+
+# Comparison Function
+
+```cpp
+bool operator<(const Node &a) const
+```
+
+Used to sort priority queue.
+
+```cpp
+return cost > a.cost;
+```
+
+Smallest cost gets highest priority.
+
+---
+
+# Main Function
+
+```cpp
+priority_queue<Node> pq;
+```
+
+Creates priority queue.
+
+---
+
+# Heuristic Values
+
+```cpp
+int heuristic[5] = {7, 6, 2, 1, 0};
+```
+
+Estimated distance to goal.
+
+---
+
+# Start Node
+
+```cpp
+pq.push({0, heuristic[0]});
+```
+
+Adds starting node.
+
+---
+
+# Loop
+
+```cpp
+while (!pq.empty())
+```
+
+Runs until queue becomes empty.
+
+---
+
+# Get Top Node
+
+```cpp
+Node current = pq.top();
+pq.pop();
+```
+
+Gets node with smallest cost.
+
+---
+
+# Print Node
+
+```cpp
+cout << current.vertex << " ";
+```
+
+Prints current node.
+
+---
+
+# Goal Check
+
+```cpp
+if (current.vertex == 4)
+```
+
+Checks goal node.
+
+```cpp
+cout << "\nGoal Reached";
+```
+
+Prints success message.
+
+---
+
+# Add Neighbor Nodes
+
+```cpp
+pq.push({1, 1 + heuristic[1]});
+```
+
+Adds next node with cost.
+
+Same process for other nodes.
+
+---
+
+# Simple Theory
+
+A* algorithm is used to find shortest path.
+
+It uses:
+
+f(n)=g(n)+h(n)
+
+Where:
+
+* g(n) = actual cost
+* h(n) = estimated cost
+* f(n) = total cost
+
+Used in:
+
+* Games
+* Maps
+* Navigation
+* AI searching

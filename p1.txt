@@ -1,0 +1,353 @@
+## Depth First Search (DFS) and Breadth First Search (BFS) in C++
+
+### Simple C++ Code
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+vector<int> graph[10];
+bool visited[10];
+
+void dfs(int node)
+{
+    visited[node] = true;
+    cout << node << " ";
+
+    for (int next : graph[node])
+    {
+        if (!visited[next])
+        {
+            dfs(next);
+        }
+    }
+}
+
+void bfs(int start)
+{
+    queue<int> q;
+
+    for(int i=0;i<10;i++)
+    {
+        visited[i] = false;
+    }
+
+    visited[start] = true;
+    q.push(start);
+
+    while (!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+
+        cout << node << " ";
+
+        for (int next : graph[node])
+        {
+            if (!visited[next])
+            {
+                visited[next] = true;
+                q.push(next);
+            }
+        }
+    }
+}
+
+int main()
+{
+    int vertices, edges;
+    cin >> vertices >> edges;
+
+    for (int i = 0; i < edges; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
+
+    cout << "DFS: ";
+    dfs(0);
+
+    cout << endl;
+
+    for(int i=0;i<10;i++)
+    {
+        visited[i] = false;
+    }
+
+    cout << "BFS: ";
+    bfs(0);
+
+    return 0;
+}
+```
+
+---
+
+# Example Input
+
+```text
+5 4
+0 1
+0 2
+1 3
+2 4
+```
+
+# Output
+
+```text
+DFS: 0 1 3 2 4
+BFS: 0 1 2 3 4
+```
+
+---
+
+# Line by Line Explanation
+
+## Header Files
+
+```cpp
+#include <iostream>
+```
+
+Used for input and output.
+
+```cpp
+#include <vector>
+```
+
+Used to store graph nodes dynamically.
+
+```cpp
+#include <queue>
+```
+
+Used in BFS algorithm.
+
+```cpp
+using namespace std;
+```
+
+To use standard library names directly.
+
+---
+
+## Graph Declaration
+
+```cpp
+vector<int> graph[10];
+```
+
+Creates adjacency list for graph.
+
+```cpp
+bool visited[10];
+```
+
+Stores whether node is visited or not.
+
+---
+
+# DFS Function
+
+```cpp
+void dfs(int node)
+```
+
+DFS function starts from given node.
+
+```cpp
+visited[node] = true;
+```
+
+Marks current node as visited.
+
+```cpp
+cout << node << " ";
+```
+
+Prints current node.
+
+```cpp
+for (int next : graph[node])
+```
+
+Traverses all connected nodes.
+
+```cpp
+if (!visited[next])
+```
+
+Checks if node is not visited.
+
+```cpp
+dfs(next);
+```
+
+Recursive DFS call.
+
+---
+
+# BFS Function
+
+```cpp
+void bfs(int start)
+```
+
+BFS function starts from given node.
+
+```cpp
+queue<int> q;
+```
+
+Creates queue for BFS.
+
+```cpp
+visited[start] = true;
+```
+
+Marks starting node visited.
+
+```cpp
+q.push(start);
+```
+
+Adds start node into queue.
+
+---
+
+## While Queue Not Empty
+
+```cpp
+while (!q.empty())
+```
+
+Runs until queue becomes empty.
+
+```cpp
+int node = q.front();
+```
+
+Gets front node.
+
+```cpp
+q.pop();
+```
+
+Removes front node.
+
+```cpp
+cout << node << " ";
+```
+
+Prints node.
+
+---
+
+## Visit Neighbors
+
+```cpp
+for (int next : graph[node])
+```
+
+Checks all adjacent nodes.
+
+```cpp
+if (!visited[next])
+```
+
+If node not visited.
+
+```cpp
+visited[next] = true;
+```
+
+Marks visited.
+
+```cpp
+q.push(next);
+```
+
+Adds node into queue.
+
+---
+
+# Main Function
+
+```cpp
+int vertices, edges;
+cin >> vertices >> edges;
+```
+
+Takes number of vertices and edges.
+
+---
+
+## Input Graph
+
+```cpp
+int u, v;
+cin >> u >> v;
+```
+
+Reads edge.
+
+```cpp
+graph[u].push_back(v);
+graph[v].push_back(u);
+```
+
+Creates undirected graph.
+
+---
+
+## DFS Call
+
+```cpp
+cout << "DFS: ";
+dfs(0);
+```
+
+Starts DFS from node 0.
+
+---
+
+## Reset Visited Array
+
+```cpp
+visited[i] = false;
+```
+
+Resets visited array for BFS.
+
+---
+
+## BFS Call
+
+```cpp
+cout << "BFS: ";
+bfs(0);
+```
+
+Starts BFS from node 0.
+
+---
+
+# Simple Theory
+
+## DFS (Depth First Search)
+
+* Uses recursion or stack
+* Goes deep into graph first
+* Backtracks after reaching end
+
+## BFS (Breadth First Search)
+
+* Uses queue
+* Visits level by level
+* Finds shortest path in unweighted graph

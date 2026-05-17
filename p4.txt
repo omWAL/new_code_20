@@ -1,0 +1,277 @@
+# N-Queens Problem using Backtracking
+
+## Simple C++ Code
+
+```cpp id="5m7onq"
+#include <iostream>
+using namespace std;
+
+int board[10];
+
+bool safe(int row, int col)
+{
+    for (int i = 0; i < row; i++)
+    {
+        if (board[i] == col || abs(board[i] - col) == abs(i - row))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void queen(int row, int n)
+{
+    if (row == n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            cout << board[i] << " ";
+        }
+
+        cout << endl;
+        return;
+    }
+
+    for (int col = 0; col < n; col++)
+    {
+        if (safe(row, col))
+        {
+            board[row] = col;
+            queen(row + 1, n);
+        }
+    }
+}
+
+int main()
+{
+    int n = 4;
+
+    queen(0, n);
+
+    return 0;
+}
+```
+
+---
+
+# Output
+
+```text id="a7h6mv"
+1 3 0 2
+2 0 3 1
+```
+
+---
+
+# Line by Line Explanation
+
+## Header File
+
+```cpp id="z9ew1q"
+#include <iostream>
+```
+
+Used for input and output.
+
+```cpp id="wzvs5v"
+using namespace std;
+```
+
+Uses standard namespace.
+
+---
+
+# Board Array
+
+```cpp id="p7n4s5"
+int board[10];
+```
+
+Stores queen positions.
+
+Example:
+
+* board[0] = 1 → queen at row 0, column 1
+
+---
+
+# Safe Function
+
+```cpp id="v6b4da"
+bool safe(int row, int col)
+```
+
+Checks if queen can be placed safely.
+
+---
+
+# Check Previous Rows
+
+```cpp id="g68xvc"
+for (int i = 0; i < row; i++)
+```
+
+Checks all previous queens.
+
+---
+
+# Conflict Check
+
+```cpp id="d73om4"
+if (board[i] == col)
+```
+
+Checks same column.
+
+```cpp id="9bgjlwm"
+abs(board[i] - col) == abs(i - row)
+```
+
+Checks diagonal attack.
+
+---
+
+# Return False
+
+```cpp id="5n98zn"
+return false;
+```
+
+Position is unsafe.
+
+---
+
+# Return True
+
+```cpp id="cmjzyh"
+return true;
+```
+
+Position is safe.
+
+---
+
+# Queen Function
+
+```cpp id="6lhm1q"
+void queen(int row, int n)
+```
+
+Places queens row by row.
+
+---
+
+# Solution Found
+
+```cpp id="xkz1f9"
+if (row == n)
+```
+
+All queens placed successfully.
+
+---
+
+# Print Solution
+
+```cpp id="jlwm6c"
+cout << board[i] << " ";
+```
+
+Prints queen positions.
+
+---
+
+# Try All Columns
+
+```cpp id="sz2kcz"
+for (int col = 0; col < n; col++)
+```
+
+Checks every column.
+
+---
+
+# Safe Position
+
+```cpp id="8w4n6q"
+if (safe(row, col))
+```
+
+Checks valid position.
+
+---
+
+# Place Queen
+
+```cpp id="c1v0na"
+board[row] = col;
+```
+
+Places queen.
+
+---
+
+# Recursive Call
+
+```cpp id="4vq1q5"
+queen(row + 1, n);
+```
+
+Moves to next row.
+
+---
+
+# Main Function
+
+```cpp id="0rd3zr"
+int n = 4;
+```
+
+Board size is 4×4.
+
+---
+
+# Start Function
+
+```cpp id="8w8cc4"
+queen(0, n);
+```
+
+Starts placing queens from row 0.
+
+---
+
+# Simple Theory
+
+## N-Queens Problem
+
+Place N queens on chessboard so that:
+
+* No two queens attack each other
+
+Queens attack:
+
+* Same row
+* Same column
+* Same diagonal
+
+---
+
+# Backtracking
+
+Backtracking works by:
+
+1. Place queen
+2. Check safe position
+3. Move forward
+4. If conflict occurs, go back and try another position
+
+---
+
+# Time Complexity
+
+```text id="bhg85z"
+O(N!)
+```

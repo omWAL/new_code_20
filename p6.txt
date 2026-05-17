@@ -1,0 +1,243 @@
+# Expert System for Information Management in C++
+
+## Simple C++ Code
+
+```cpp id="8t8gxv"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int choice;
+    string name;
+
+    while (true)
+    {
+        cout << "\n1. Student Info";
+        cout << "\n2. Teacher Info";
+        cout << "\n3. Exit";
+        cout << "\nEnter choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            cout << "Enter student name: ";
+            cin >> name;
+
+            cout << "Student Name: " << name;
+            cout << "\nCourse: Computer Engineering";
+        }
+
+        else if (choice == 2)
+        {
+            cout << "Enter teacher name: ";
+            cin >> name;
+
+            cout << "Teacher Name: " << name;
+            cout << "\nDepartment: IT";
+        }
+
+        else if (choice == 3)
+        {
+            cout << "Program Ended";
+            break;
+        }
+
+        else
+        {
+            cout << "Invalid Choice";
+        }
+    }
+
+    return 0;
+}
+```
+
+---
+
+# Output
+
+```text id="ewmrts"
+1. Student Info
+2. Teacher Info
+3. Exit
+Enter choice: 1
+
+Enter student name: Om
+
+Student Name: Om
+Course: Computer Engineering
+```
+
+---
+
+# Line by Line Explanation
+
+## Header Files
+
+```cpp id="lrsh3l"
+#include <iostream>
+```
+
+Used for input and output.
+
+```cpp id="e5g5mb"
+#include <string>
+```
+
+Used for string variable.
+
+```cpp id="utxogb"
+using namespace std;
+```
+
+Uses standard namespace.
+
+---
+
+# Main Function
+
+```cpp id="efvcd4"
+int choice;
+```
+
+Stores menu choice.
+
+```cpp id="wv6n7r"
+string name;
+```
+
+Stores name.
+
+---
+
+# Infinite Loop
+
+```cpp id="bh7l3n"
+while (true)
+```
+
+Runs program continuously.
+
+---
+
+# Menu Display
+
+```cpp id="gc1b6s"
+cout << "\n1. Student Info";
+```
+
+Displays options.
+
+---
+
+# User Choice
+
+```cpp id="tcy4d5"
+cin >> choice;
+```
+
+Takes user input.
+
+---
+
+# Student Information
+
+```cpp id="8yuj8l"
+if (choice == 1)
+```
+
+Checks student option.
+
+```cpp id="n6rysk"
+cin >> name;
+```
+
+Takes student name.
+
+```cpp id="l9m4s1"
+cout << "Course: Computer Engineering";
+```
+
+Displays course info.
+
+---
+
+# Teacher Information
+
+```cpp id="zjlwmv"
+else if (choice == 2)
+```
+
+Checks teacher option.
+
+```cpp id="m26zkt"
+cout << "\nDepartment: IT";
+```
+
+Displays department.
+
+---
+
+# Exit Option
+
+```cpp id="hbxaqx"
+else if (choice == 3)
+```
+
+Checks exit option.
+
+```cpp id="tmxf9x"
+break;
+```
+
+Stops program.
+
+---
+
+# Invalid Choice
+
+```cpp id="bbf99p"
+else
+```
+
+Handles wrong input.
+
+```cpp id="g7u9x6"
+cout << "Invalid Choice";
+```
+
+Displays error message.
+
+---
+
+# Simple Theory
+
+## Expert System
+
+An Expert System is an AI program that gives decisions or information like a human expert.
+
+---
+
+# Information Management System
+
+Used to:
+
+* Store information
+* Manage records
+* Display details
+
+Examples:
+
+* Student management
+* Hospital system
+* Office records
+
+---
+
+# Features
+
+* Fast information access
+* Simple decision making
+* Easy management of records
